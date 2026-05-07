@@ -63,7 +63,10 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
+    - name: 配置Git镜像加速
+      run: |
+         git config --global url."https://github.com.cnpmjs.org/".insteadOf "https://github.com/"
+         git config --global url."https://gitproxy.click/https://github.com/".insteadOf "https://github.com/"
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
